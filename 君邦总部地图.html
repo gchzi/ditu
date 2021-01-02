@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #container {
+            height: 100%
+        }
+    </style>
+    <script type="text/javascript"
+        src="http://api.map.baidu.com/api?v=2.0&ak=LRXD35GnZKknt2BtDu9kkPEx8mjxZURe"></script>
+    <title>设置地图3D视角</title>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+
+</html>
+<script type="text/javascript">
+    var map = new BMap.Map("container");
+    var point = new BMap.Point(113.243585, 22.920564);
+    map.centerAndZoom(point, 15);
+    // 设置地图功能参数
+    window.setTimeout(function () {
+        map.panTo(new BMap.Point(113.243585, 22.920564));
+        // 地图的鼠标滚轮缩放默认是关闭的，需要配置开启？
+        map.enableScrollWheelZoom(true);
+        map.addControl(new BMap.MapTypeControl());
+        map.setCurrentCity("君邦焊机总部");
+    }, 2000);
+
+    // 添加信息窗口
+    var opts = {
+        width: 100,     // 信息窗口宽度    
+        height: 100,     // 信息窗口高度  
+        title: "君邦焊机总部"  // 信息窗口标题 ,
+    }
+    var infoWindow = new BMap.InfoWindow("欢迎你", opts);  // 创建信息窗口对象    
+    map.openInfoWindow(infoWindow, map.getCenter(113.23723, 22.914635)); // 打开信息窗口
+</script>
